@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
 class ComputerParts extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+
     return (
       <div>
-        <div>{this.props.parts}</div>
+        <h4>{this.props.part}</h4>
       </div>
     );
   }

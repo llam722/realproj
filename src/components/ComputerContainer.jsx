@@ -7,7 +7,7 @@ class ComputerContainer extends Component {
     return (
       <div>
         <h2>Computer Container</h2>
-        <ComputerCreator></ComputerCreator>
+        <ComputerCreator/>
         <ComputerList />
       </div>
     )

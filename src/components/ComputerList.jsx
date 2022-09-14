@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import ComputerParts from './ComputerParts.jsx';
 
-class ComputerList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      parts: [],
-    };
-  }
 
-  render() {
+
+function ComputerList() {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     parts: ['Mobo', 'SSD', 'RAM'],
+  //   };
+  // }
+  // render() {
+    const [parts, setParts] = useState([0])
+
+    const components = [];
+    for (let i = 0; i < this.state.parts.length; i++) {
+      components.push(<ComputerParts key={i} part={this.state.parts[i]} />);
+    }
     return (
       <div>
         <h1>Computer List</h1>
-        {this.state.parts.map((parts, i) => {
-          return <ComputerParts key={`Part${i}`} parts={parts} />;
-        })}
+        {components}
       </div>
     );
-  }
+  // }
 }
 
 export default ComputerList;

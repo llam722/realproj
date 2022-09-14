@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ComputerContainer from './ComputerContainer.jsx'
 
-class App extends Component {
+function App() {
   
-  render() {
     return (
       <div>
         <h1>Hello World! Wow</h1>
@@ -11,6 +10,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
 export default App;
