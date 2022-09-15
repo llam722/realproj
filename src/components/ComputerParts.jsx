@@ -1,8 +1,14 @@
 import React from 'react';
 
-function ComputerParts({ props, part, price, handleUpdate }) {
+function ComputerParts({
+  props,
+  part,
+  price,
+  handleUpdate,
+  setPart,
+  setPrice,
+}) {
   return (
-    
     <div>
       <h3>
         {part} {price}
@@ -15,7 +21,7 @@ function ComputerParts({ props, part, price, handleUpdate }) {
           minLength="2"
         ></input>
         <input
-          onChange={(price) => setPart(price.target.value)}
+          onChange={(price) => setPrice(price.target.value)}
           type="number"
           placeholder="Update Price"
         ></input>
