@@ -17,15 +17,19 @@ function ComputerContainer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const request = { part: part, price: price };
+    // const request = { part: part, price: price };
+    // console.log(request);
     fetch('http://localhost:3000/', {
       method: 'POST',
       headers: {
-        'Context-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(request),
+      body: JSON.stringify({ part: part, price: price }),
     })
       .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+      })
       .catch((err) => console.log(err));
     // setData([...data, { part: e.target[0].value, price: e.target[1].value }]);
   };

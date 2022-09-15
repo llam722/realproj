@@ -23,10 +23,7 @@ ComputerController.getComputerParts = async (req, res, next) => {
 ComputerController.addComputerParts = async (req, res, next) => {
   try {
     const { price, part } = req.body;
-    // const { part, price } = obj;
-    // const obj = {};
-    // obj.part = 'RTX3090';
-    // obj.price = 2000;
+    console.log(req.body);
     const text = 'INSERT INTO parts(part, price) VALUES ($1, $2)';
     const params = [part, price];
     const result = await db.query(text, params);
