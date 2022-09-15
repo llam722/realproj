@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ComputerParts extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-
-    return (
-      <div>
-        <h4>{this.props.part}</h4>
-      </div>
-    );
-  }
+function ComputerParts({ count }) {
+  return (
+    <div>
+      {/* <h4>{this.props.part}</h4> */}
+      <h3>{count}</h3>
+    </div>
+  );
 }
 
 export default ComputerParts;

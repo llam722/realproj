@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import ComputerParts from './ComputerParts.jsx';
 
-class ComputerCreator extends Component {
-  render() {
-    return (
-      <div>
-        <h3>Add a new part</h3>
-        <form>
-          <input type="text" placeholder="Add a new part..."></input>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    );
-  }
+function ComputerCreator({ count }) {
+  // // const [text, useText] = useState('');
+  // const handleSubmit = (e) => {
+  //   // console.log(e.target.value);
+  //   return <ComputerParts count={count} />;
+  // };
+
+  return (
+    <div>
+      <h3>Add a new part</h3>
+    </div>
+  );
 }
 
 export default ComputerCreator;
