@@ -39,13 +39,13 @@ function ComputerContainer() {
       <h2>Computer Container</h2>
       <form onSubmit={handleSubmit}>
         <input
-          onChange={(item) => setPart(item.target.value)}
+          onChange={(part) => setPart(part.target.value)}
           type="text"
           placeholder="Add a new part..."
           minLength="2"
         ></input>
         <input
-          onChange={(item) => setPrice(item.target.value)}
+          onChange={(price) => setPrice(price.target.value)}
           type="number"
           placeholder="Add a price..."
           minLength="1"
