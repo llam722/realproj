@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import ComputerCreator from './ComputerCreator.jsx';
 import ComputerList from './ComputerList.jsx';
-import axios from 'axios';
 
 function ComputerContainer() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch('/');
-      const data = await response.json();
-      return data;
-    }
-  });
+    fetch('http://localhost:3000/')
+      .then((data) => data.json())
+      .then((response) => setData(response));
+  }, []);
+
+  // console.log(data);
+  const [part, setPart] = useState('');
+  const [price, setPrice] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e);
-    setData([...data, { part: e.target[0].value, price: e.target[1].value }]);
+    const body = { part: part, price: price };
+    fetch('http://localhost:3000/', { method: 'POST' })
+      .then((data) => data.json())
+      .then((response) => response);
+    // setData([...data, { part: e.target[0].value, price: e.target[1].value }]);
   };
 
   return (
@@ -25,11 +29,17 @@ function ComputerContainer() {
       <h2>Computer Container</h2>
       <form onSubmit={handleSubmit}>
         <input
+          oncChange={(item) => setPart(item.target.value)}
           type="text"
           placeholder="Add a new part..."
           minLength="2"
         ></input>
-        <input type="number" placeholder="Add a price..." minLength="1"></input>
+        <input
+          oncChange={(item) => setPrice(item.target.value)}
+          type="number"
+          placeholder="Add a price..."
+          minLength="1"
+        ></input>
         <button type="submit">Submit</button>
       </form>
       <ComputerCreator />

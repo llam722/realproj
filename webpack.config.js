@@ -8,6 +8,14 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'server'),
+    },
+    compress: true,
+    port: 8080,
+    allowedHosts: 'auto',
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: './src/index.html',
