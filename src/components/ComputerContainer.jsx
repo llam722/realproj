@@ -17,10 +17,16 @@ function ComputerContainer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const body = { part: part, price: price };
-    fetch('http://localhost:3000/', { method: 'POST' })
+    const request = { part: part, price: price };
+    fetch('http://localhost:3000/', {
+      method: 'POST',
+      headers: {
+        'Context-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    })
       .then((data) => data.json())
-      .then((response) => response);
+      .catch((err) => console.log(err));
     // setData([...data, { part: e.target[0].value, price: e.target[1].value }]);
   };
 
@@ -29,13 +35,13 @@ function ComputerContainer() {
       <h2>Computer Container</h2>
       <form onSubmit={handleSubmit}>
         <input
-          oncChange={(item) => setPart(item.target.value)}
+          onChange={(item) => setPart(item.target.value)}
           type="text"
           placeholder="Add a new part..."
           minLength="2"
         ></input>
         <input
-          oncChange={(item) => setPrice(item.target.value)}
+          onChange={(item) => setPrice(item.target.value)}
           type="number"
           placeholder="Add a price..."
           minLength="1"
