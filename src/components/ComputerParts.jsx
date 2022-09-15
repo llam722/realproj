@@ -1,13 +1,10 @@
 import React from 'react';
 
-function ComputerParts({
-  props,
-  part,
-  price,
-  handleUpdate,
-  setPart,
-  setPrice,
-}) {
+function ComputerParts({ part, price, setPart, setPrice }) {
+  const handleUpdate = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <h3>
