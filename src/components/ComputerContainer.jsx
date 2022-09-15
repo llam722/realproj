@@ -61,7 +61,7 @@ function ComputerContainer() {
         Reset
       </button>
       <h2>{data.reduce((curr, acc) => curr + Number(acc.price), 0)}</h2>
-      <ComputerList props={data} />
+      <ComputerList props={data} setPart={setPart} setPrice={setPrice} />
     </div>
   );
 }

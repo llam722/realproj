@@ -1,10 +1,26 @@
 import React from 'react';
 
-function ComputerParts({ count }) {
+function ComputerParts({ props, part, price, handleUpdate }) {
   return (
+    
     <div>
-      {/* <h4>{this.props.part}</h4> */}
-      <h3>{count}</h3>
+      <h3>
+        {part} {price}
+      </h3>
+      <form onSubmit={handleUpdate}>
+        <input
+          onChange={(part) => setPart(part.target.value)}
+          type="text"
+          placeholder="Update Part"
+          minLength="2"
+        ></input>
+        <input
+          onChange={(price) => setPart(price.target.value)}
+          type="number"
+          placeholder="Update Price"
+        ></input>
+        <button type="submit">Update</button>
+      </form>
     </div>
   );
 }

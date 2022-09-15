@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
 import ComputerParts from './ComputerParts.jsx';
 
-function ComputerList({ props }) {
-  const handleUpdate = (e) => {};
+function ComputerList({ props, setPart, setPrice }) {
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    // console.log(e.target[0].value);
+    // console.log(e.target[1].value);
+    fetch('http://localhost:3000/', {
+      method: 'PUT',
+      header: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({ part: e.target[0].value, price: e.target[1].value })
+      .then((data) => console.log(data))
+    });
+    // setPart(props = e.target[0].value);
+    // setPrice(props = e.target[1].value);
+  };
+
   return (
     <div>
       <h1>Computer List</h1>
-      {props.map((el, i) => {
-        return (
-          <h1 key={i}>
-            {el.part} {el.price}
-          </h1>
-        );
-      })}
-      <form>
-        <input
-          onChange={(part) => setPart(part.target.value)}
-          type="text"
-          placeholder="Update Part"
-          minLength="2"
-        ></input>
-        <input
-          onChange={(price) => setPart(price.target.value)}
-          type="text"
-          placeholder="Update Price"
-          minLength="2"
-        ></input>
-      </form>
+      {props.map((el, i) => (
+        <ComputerParts
+          key={i}
+          part={el.part}
+          price={el.price}
+          handleUpdate={handleUpdate}
+          setPart={setPart}
+          setPrice={setPrice}
+        />
+      ))}
     </div>
   );
 }
