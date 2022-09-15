@@ -7,10 +7,11 @@ const getParts = 'SELECT * FROM parts';
 
 ComputerController.getComputerParts = async (req, res, next) => {
   try {
-    const result = await db.query(getParts);
-    console.log('line12', result.rows);
-    res.locals.parts = result.rows;
-    return next();
+    // const result = await db.query(getParts);
+    // console.log('line12', result.rows);
+    // res.locals.parts = result.rows;
+    // return next();
+    console.log(req.body, req.params);
   } catch (err) {
     next({
       log: `computerController.getComputerParts`,

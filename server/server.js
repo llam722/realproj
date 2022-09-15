@@ -8,7 +8,9 @@ const apiRouter = require('./routers/apiRouter');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api', apiRouter);
+// app.use(express.static(path.resolve(__dirname, '../client')));
+
+app.use('/', apiRouter);
 
 app.use('*', (err, req, res, next) => {
   const defaultError = {

@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ComputerCreator from './ComputerCreator.jsx';
 import ComputerList from './ComputerList.jsx';
+import axios from 'axios';
 
 function ComputerContainer() {
-  const [data, setData] = useState([
-    {
-      part: 'ssd',
-      price: 150,
-    },
-    {
-      part: 'mobo',
-      price: 400,
-    },
-    {
-      part: 'wow',
-      price: 500,
-    },
-  ]);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch('/');
+      const data = await response.json();
+      return data;
+    }
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

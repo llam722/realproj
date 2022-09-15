@@ -8,7 +8,7 @@ function ComputerList({ props }) {
   // for (let i = 0; i < this.state.parts.length; i++) {
   //   components.push(<ComputerParts key={i} part={this.state.parts[i]} />);
   // }
-  console.log(props);
+  // console.log(props);
   return (
     <div>
       <h1>Computer List</h1>
