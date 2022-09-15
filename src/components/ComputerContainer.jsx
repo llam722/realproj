@@ -9,7 +9,7 @@ function ComputerContainer() {
     fetch('http://localhost:3000/')
       .then((data) => data.json())
       .then((response) => setData(response));
-  }, []);
+  });
 
   // console.log(data);
   const [part, setPart] = useState('');
