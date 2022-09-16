@@ -1,39 +1,28 @@
 import React, { useState } from 'react';
 import ComputerParts from './ComputerParts.jsx';
 
-function ComputerList({ props, setPart, setPrice }) {
+function ComputerList({ data, setPart, setPrice, handleDelete }) {
   // const handleUpdate = (e) => {
   //   e.preventDefault();
-  //       setPart(e.target[0].value);
-  //   setPrice(e.target[1].value);
+  //     setPart(e.target[0].value);
+  // setPrice(e.target[1].value);
   //   console.log(e.target[0].value);
-    // // console.log(e.target[0].value);
-    // // console.log(e.target[1].value);
-    // fetch('http://localhost:3000/', {
-    //   method: 'PATCH',
-    //   header: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     part: e.target[0].value,
-    //     price: e.target[1].value,
-    //   }).then((data) => data.json())
-    //     .then(res => {
-    //     return res
-    //   })
-    // });
   // };
 
   return (
     <div>
       <h1>Computer List</h1>
-      {props.map((el, i) => (
+      {data.map((item, id) => (
         <ComputerParts
-          key={i}
-          part={el.part}
-          price={el.price}
+          data={data}
+          key={id}
+          item={item}
+          _id={item._id}
+          part={item.part}
+          price={item.price}
           setPart={setPart}
           setPrice={setPrice}
+          handleDelete={handleDelete}
         />
       ))}
     </div>

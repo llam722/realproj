@@ -11,7 +11,7 @@ router.post('/', ComputerController.addComputerParts, (req, res) => {
   res.status(200).json(res.locals.parts);
 });
 
-router.put('/', ComputerController.updateComputerParts, (req, res) => {
+router.patch('/', ComputerController.updateComputerParts, (req, res) => {
   res.status(200).json(res.locals.update);
 });
 

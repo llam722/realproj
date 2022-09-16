@@ -23,7 +23,7 @@ ComputerController.getComputerParts = async (req, res, next) => {
 ComputerController.addComputerParts = async (req, res, next) => {
   try {
     const { price, part } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const text = 'INSERT INTO parts(part, price) VALUES ($1, $2)';
     const params = [part, price];
     const result = await db.query(text, params);
@@ -42,11 +42,14 @@ ComputerController.addComputerParts = async (req, res, next) => {
 ComputerController.updateComputerParts = async (req, res, next) => {
   try {
     const { _id, part, price } = req.body;
-    const text = `UPDATE parts SET part=$1, price=$2 WHERE _id=$3`;
+    const text = `UPDATE parts SET part=$1, price=$2 WHERE _id=$3 RETURNING *`;
     const params = [part, price, _id];
     console.log(params);
     const result = await db.query(text, params);
+    // console.log(result);
     res.locals.update = result;
+    // console.log(result.rows);
+    // console.log(res.locals.update);
     next();
   } catch {
     next({

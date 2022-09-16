@@ -1,8 +1,38 @@
 import React from 'react';
+import { FaTimes } from 'react-icons/fa';
 
-function ComputerParts({ part, price, setPart, setPrice }) {
+function ComputerParts({
+  item,
+  data,
+  id,
+  _id,
+  part,
+  price,
+  setPart,
+  setPrice,
+  handleDelete,
+}) {
   const handleUpdate = (e) => {
     e.preventDefault();
+    console.log(_id, part, price);
+    fetch('http://localhost:3000/', {
+      method: 'PATCH',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id,
+        part,
+        price,
+      }),
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        console.log(res);
+      });
+    // console.log(e);
+    // setPart(e.target[0].value);
+    // setPrice(e.target[1].value);
   };
 
   return (
@@ -10,6 +40,9 @@ function ComputerParts({ part, price, setPart, setPrice }) {
       <h3>
         {part} {price}
       </h3>
+      <button onClick={(data) => handleDelete(data.id)}>
+        <FaTimes />
+      </button>
       <form onSubmit={handleUpdate}>
         <input
           onChange={(part) => setPart(part.target.value)}

@@ -4,7 +4,7 @@ import ComputerContainer from './ComputerContainer.jsx';
 function App() {
   return (
     <div>
-      <h1>Hello World! Wow</h1>
+      <h1>Theorized Shopping List</h1>
       <ComputerContainer />
     </div>
   );
