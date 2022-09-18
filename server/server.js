@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.resolve(__dirname, 'src')));
 
 app.use(cors());
-app.use('/', apiRouter);
+app.use('/api', apiRouter);
 
 app.use('*', (err, req, res, next) => {
   const defaultError = {

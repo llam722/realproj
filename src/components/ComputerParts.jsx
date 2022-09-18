@@ -1,38 +1,31 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-function ComputerParts({
-  item,
-  data,
-  id,
-  _id,
-  part,
-  price,
-  setPart,
-  setPrice,
-  handleDelete,
-}) {
+function ComputerParts({ _id, part, price, setPart, setPrice, handleDelete }) {
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log(_id, part, price);
-    fetch('http://localhost:3000/', {
-      method: 'PATCH',
-      header: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        _id,
-        part,
-        price,
-      }),
-    })
+    // console.log(e);
+    console.log('update', _id, e.target[0].value, e.target[1].value);
+    // console.log('update', _id, price, part);
+    //PARAMS IN BACKEND PASSING IN UNDEFINED..
+    fetch(
+      `api/?_id=${_id}&part=${e.target[0].value}&price=${e.target[1].value}`,
+      {
+        method: 'PATCH',
+        header: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          _id: _id,
+          part: e.target[0].value,
+          price: e.target[1].value,
+        }),
+      }
+    )
       .then((data) => data.json())
       .then((res) => {
-        console.log(res);
+        console.log('res', res);
       });
-    // console.log(e);
-    // setPart(e.target[0].value);
-    // setPrice(e.target[1].value);
   };
 
   return (
@@ -40,7 +33,7 @@ function ComputerParts({
       <h3>
         {part} {price}
       </h3>
-      <button onClick={(data) => handleDelete(data.id)}>
+      <button onClick={() => handleDelete(_id)}>
         <FaTimes />
       </button>
       <form onSubmit={handleUpdate}>

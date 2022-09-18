@@ -6,7 +6,7 @@ function ComputerContainer() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/')
+    fetch('api/')
       .then((data) => data.json())
       .then((response) => setData(response));
   }, []);
@@ -17,7 +17,7 @@ function ComputerContainer() {
 
   const deleteFeedback = (id) => {
     if (window.confirm('Remove this item?')) {
-      fetch('http://localhost:3000/', {
+      fetch(`api/?_id=${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function ComputerContainer() {
     e.preventDefault();
     // const request = { part: part, price: price };
     // console.log(request);
-    fetch('http://localhost:3000/', {
+    fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,13 +58,13 @@ function ComputerContainer() {
       <h2>Parts and Price form</h2>
       <form onSubmit={handleSubmit}>
         <input
-          onChange={(part) => setPart(part.target.value)}
+          onChange={(e) => setPart(e.target.value)}
           type="text"
           placeholder="Add a new part..."
           minLength="2"
         ></input>
         <input
-          onChange={(price) => setPrice(price.target.value)}
+          onChange={(e) => setPrice(e.target.value)}
           type="number"
           placeholder="Add a price..."
           minLength="1"
@@ -82,6 +82,8 @@ function ComputerContainer() {
       <h2>{data.reduce((curr, acc) => curr + Number(acc.price), 0)}</h2>
       <ComputerList
         data={data}
+        part={part}
+        price={price}
         setPart={setPart}
         setPrice={setPrice}
         handleDelete={deleteFeedback}

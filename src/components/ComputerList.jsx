@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ComputerParts from './ComputerParts.jsx';
 
-function ComputerList({ data, setPart, setPrice, handleDelete }) {
+function ComputerList({ data, part, price, setPart, setPrice, handleDelete }) {
   // const handleUpdate = (e) => {
   //   e.preventDefault();
   //     setPart(e.target[0].value);
