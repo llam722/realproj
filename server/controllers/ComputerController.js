@@ -53,7 +53,7 @@ ComputerController.updateComputerParts = async (req, res, next) => {
     // console.log(result.rows);
     // console.log(res.locals.update);
     next();
-  } catch {
+  } catch (err) {
     next({
       log: `computerController.updateComputerParts`,
       message: `ERROR ${err} ComputerController.updateComputerParts`,

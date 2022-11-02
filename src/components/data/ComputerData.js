@@ -1,9 +1,11 @@
 const computerData = [
   {
+    _id: 1,
     part: 'ssd',
     price: 150,
   },
   {
+    _id: 12,
     part: 'mobo',
     price: 400,
   },

@@ -7,7 +7,6 @@ function ComputerParts({ _id, part, price, setPart, setPrice, handleDelete }) {
     // console.log(e);
     console.log('update', _id, e.target[0].value, e.target[1].value);
     // console.log('update', _id, price, part);
-    //PARAMS IN BACKEND PASSING IN UNDEFINED..
     fetch(
       `api/?_id=${_id}&part=${e.target[0].value}&price=${e.target[1].value}`,
       {
